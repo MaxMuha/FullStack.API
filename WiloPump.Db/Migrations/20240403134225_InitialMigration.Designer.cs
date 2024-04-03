@@ -12,7 +12,7 @@ using WiloPump.Db;
 namespace WiloPump.Db.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240331110002_InitialMigration")]
+    [Migration("20240403134225_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -90,8 +90,8 @@ namespace WiloPump.Db.Migrations
                         new
                         {
                             Id = new Guid("d31c3852-9e03-4b8a-a518-e1d876118fae"),
-                            Description = "Материал корпуса",
-                            Name = "Материал корпуса"
+                            Description = "Прочный материал",
+                            Name = "Чугун"
                         },
                         new
                         {
@@ -114,9 +114,6 @@ namespace WiloPump.Db.Migrations
                     b.Property<Guid>("EngineId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("EngineId1")
-                        .HasColumnType("uuid");
-
                     b.Property<Guid>("HousingMaterialId")
                         .HasColumnType("uuid");
 
@@ -128,12 +125,6 @@ namespace WiloPump.Db.Migrations
                         .HasColumnType("text");
 
                     b.Property<Guid>("LmpellerMaterialId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid?>("MaterialId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid?>("MaterialId1")
                         .HasColumnType("uuid");
 
                     b.Property<int>("MaxPressure")
@@ -153,15 +144,9 @@ namespace WiloPump.Db.Migrations
 
                     b.HasIndex("EngineId");
 
-                    b.HasIndex("EngineId1");
-
                     b.HasIndex("HousingMaterialId");
 
                     b.HasIndex("LmpellerMaterialId");
-
-                    b.HasIndex("MaterialId");
-
-                    b.HasIndex("MaterialId1");
 
                     b.ToTable("Pumps");
 
@@ -169,50 +154,94 @@ namespace WiloPump.Db.Migrations
                         new
                         {
                             Id = new Guid("1f9631b1-76cf-42f7-bd64-aee4386c9cad"),
-                            Description = "Трехскоростной циркуляционный насос",
+                            Description = "Простой и надёжный циркуляционный насос с мокрым ротором.",
                             EngineId = new Guid("88de934e-46ac-41f6-b72a-9a7ceb398d18"),
                             HousingMaterialId = new Guid("d31c3852-9e03-4b8a-a518-e1d876118fae"),
-                            Image = "Изображение",
+                            Image = "https://cdn.vseinstrumenti.ru/images/goods/santehnicheskoe-oborudovanie/inzhenernaya-santehnika/12017849/560x504/154444745.jpg",
                             LiquidTemperature = "-10,+110",
                             LmpellerMaterialId = new Guid("b6962658-3f60-4456-8df0-190e3b214204"),
                             MaxPressure = 10,
                             Name = "NOC 25/8 EM",
-                            Price = 13500m,
-                            Weight = 3.7999999999999998
+                            Price = 11495m,
+                            Weight = 3.0
+                        },
+                        new
+                        {
+                            Id = new Guid("ed725738-d0e0-42e6-91c3-ba1fbae7f2ec"),
+                            Description = "Циркуляционный насос для специализированных работ",
+                            EngineId = new Guid("88de934e-46ac-41f6-b72a-9a7ceb398d18"),
+                            HousingMaterialId = new Guid("d31c3852-9e03-4b8a-a518-e1d876118fae"),
+                            Image = "https://cdn.vseinstrumenti.ru/images/goods/santehnicheskoe-oborudovanie/inzhenernaya-santehnika/8576907/560x504/99483939.jpg",
+                            LiquidTemperature = "+110",
+                            LmpellerMaterialId = new Guid("b6962658-3f60-4456-8df0-190e3b214204"),
+                            MaxPressure = 10,
+                            Name = "NOC 65/12 DM",
+                            Price = 53053m,
+                            Weight = 24.0
+                        },
+                        new
+                        {
+                            Id = new Guid("914e3db4-0c95-436d-a9e8-72a9d236bef7"),
+                            Description = "Простой и надёжный циркуляционный насос с мокрым ротором.",
+                            EngineId = new Guid("88de934e-46ac-41f6-b72a-9a7ceb398d18"),
+                            HousingMaterialId = new Guid("d31c3852-9e03-4b8a-a518-e1d876118fae"),
+                            Image = "https://cdn.vseinstrumenti.ru/images/goods/santehnicheskoe-oborudovanie/inzhenernaya-santehnika/12017891/560x504/154444973.jpg",
+                            LiquidTemperature = "+110",
+                            LmpellerMaterialId = new Guid("b6962658-3f60-4456-8df0-190e3b214204"),
+                            MaxPressure = 10,
+                            Name = "NOC 50/16 DM",
+                            Price = 81227m,
+                            Weight = 21.0
+                        },
+                        new
+                        {
+                            Id = new Guid("93a74c8a-0e56-4c2e-bbd1-8e8c362e8c3b"),
+                            Description = "Высокоэффективный насос с электронной системой регулирования.",
+                            EngineId = new Guid("88de934e-46ac-41f6-b72a-9a7ceb398d18"),
+                            HousingMaterialId = new Guid("d31c3852-9e03-4b8a-a518-e1d876118fae"),
+                            Image = "https://cdn.vseinstrumenti.ru/images/goods/santehnicheskoe-oborudovanie/inzhenernaya-santehnika/13016417/560x504/159541025.jpg",
+                            LiquidTemperature = "+95",
+                            LmpellerMaterialId = new Guid("b6962658-3f60-4456-8df0-190e3b214204"),
+                            MaxPressure = 10,
+                            Name = "Yonos Pico 25/1-4",
+                            Price = 26412m,
+                            Weight = 1.8
+                        },
+                        new
+                        {
+                            Id = new Guid("28e9e46e-88bc-4751-af0e-a75980d4e489"),
+                            Description = "Циркуляционный насос с мокрым ротором для установки в трубах с ручной трехступенчатой регулировкой частоты вращения.",
+                            EngineId = new Guid("88de934e-46ac-41f6-b72a-9a7ceb398d18"),
+                            HousingMaterialId = new Guid("d31c3852-9e03-4b8a-a518-e1d876118fae"),
+                            Image = "https://cdn.vseinstrumenti.ru/images/goods/santehnicheskoe-oborudovanie/inzhenernaya-santehnika/13172509/560x504/160317907.jpg",
+                            LiquidTemperature = "-10,+110",
+                            LmpellerMaterialId = new Guid("b6962658-3f60-4456-8df0-190e3b214204"),
+                            MaxPressure = 10,
+                            Name = "STAR-RS 25/6",
+                            Price = 22010m,
+                            Weight = 3.2000000000000002
                         });
                 });
 
             modelBuilder.Entity("WiloPump.Db.Models.Pump", b =>
                 {
                     b.HasOne("WiloPump.Db.Models.Engine", "Engine")
-                        .WithMany()
+                        .WithMany("Pumps")
                         .HasForeignKey("EngineId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WiloPump.Db.Models.Engine", null)
-                        .WithMany("Pumps")
-                        .HasForeignKey("EngineId1");
-
                     b.HasOne("WiloPump.Db.Models.Material", "HousingMaterial")
-                        .WithMany()
+                        .WithMany("HousingMaterialPumps")
                         .HasForeignKey("HousingMaterialId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("WiloPump.Db.Models.Material", "LmpellerMaterial")
-                        .WithMany()
+                        .WithMany("LmpellerMaterialPumps")
                         .HasForeignKey("LmpellerMaterialId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("WiloPump.Db.Models.Material", null)
-                        .WithMany("HousingMaterialPumps")
-                        .HasForeignKey("MaterialId");
-
-                    b.HasOne("WiloPump.Db.Models.Material", null)
-                        .WithMany("LmpellerMaterialPumps")
-                        .HasForeignKey("MaterialId1");
 
                     b.Navigation("Engine");
 
